@@ -1,5 +1,6 @@
 import { Global, Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
 import App from './config/app.config'
 import Orm from './config/orm.config'
@@ -11,6 +12,10 @@ import Orm from './config/orm.config'
       isGlobal: true,
       envFilePath: process.cwd() + '/.env',
       load: [Orm, App],
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (cs: ConfigService) => cs.get('typeorm'),
     }),
   ],
 })

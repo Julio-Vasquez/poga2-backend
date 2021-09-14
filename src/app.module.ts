@@ -1,17 +1,10 @@
 import { Module } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { CommonModule } from './modules/@common/@common.module'
+import { RoleModule } from './modules/role/role.module'
 
 @Module({
-  imports: [
-    CommonModule,
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (cs: ConfigService) => cs.get('typeorm'),
-    }),
-  ],
+  imports: [CommonModule, RoleModule],
   controllers: [],
   providers: [],
 })
