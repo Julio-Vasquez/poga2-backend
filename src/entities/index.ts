@@ -1,0 +1,8 @@
+export { AgreementEntity } from './agreement.entity'
+export { CommitteeEntity } from './committee.entity'
+export { ModalityEntity } from './modality.entity'
+export { PersonEntity } from './person.entity'
+export { Poga2Entity } from './poga2.entity'
+export { RoleEntity } from './role.entity'
+export { SettledEntity } from './settled.entity'
+export { StateEntity } from './state.entity'
