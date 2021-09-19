@@ -16,8 +16,8 @@ import { RoleEntity } from './role.entity'
 @Entity('PERSONA')
 @Index(['phone', 'identification'])
 export class PersonEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_PERSONA' })
-  auPerson: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_PERSONA' })
+  auPerson: string
 
   @Column('bigint', { nullable: false, name: 'IDENTIFICACION' })
   identification: number

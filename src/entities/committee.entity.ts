@@ -11,8 +11,8 @@ import { SettledEntity } from './settled.entity'
 
 @Entity('COMITE')
 export class CommitteeEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_COMITE' })
-  auCommittee: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_COMITE' })
+  auCommittee: string
 
   @Column('varchar', { nullable: false, name: 'COMITE' })
   committee: string

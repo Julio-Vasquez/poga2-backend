@@ -11,8 +11,8 @@ import { SettledEntity } from './settled.entity'
 
 @Entity('ACUERDO')
 export class AgreementEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_ACUERDO' })
-  auAgreement: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_ACUERDO' })
+  auAgreement: string
 
   @Column('varchar', { nullable: false, name: 'ACUERDO_OPCION_GRADO' })
   agreement: string

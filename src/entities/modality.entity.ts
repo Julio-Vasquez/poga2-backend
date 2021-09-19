@@ -11,8 +11,8 @@ import { Poga2Entity } from './poga2.entity'
 
 @Entity('MODALIDAD')
 export class ModalityEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_MODALIDAD' })
-  auModality: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_MODALIDAD' })
+  auModality: string
 
   @Column('varchar', { nullable: false, name: 'MODALIDAD' })
   modality: string

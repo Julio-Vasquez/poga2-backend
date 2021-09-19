@@ -11,8 +11,8 @@ import { PersonEntity } from './person.entity'
 
 @Entity('ROL')
 export class RoleEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_ROL' })
-  auRole: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_ROL' })
+  auRole: string
 
   @Column('varchar', { nullable: false, name: 'ROL', unique: true })
   role: string

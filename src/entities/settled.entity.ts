@@ -14,8 +14,8 @@ import { Poga2Entity } from './poga2.entity'
 
 @Entity('RADICADO')
 export class SettledEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_RADICADO' })
-  auSettled: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_RADICADO' })
+  auSettled: string
 
   @Column('varchar', { nullable: false, name: 'RADICADO' })
   settled: string

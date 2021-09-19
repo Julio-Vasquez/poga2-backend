@@ -15,8 +15,8 @@ import { StateEntity } from './state.entity'
 
 @Entity('OPCION_DE_GRADO')
 export class Poga2Entity {
-  @PrimaryGeneratedColumn('increment', { name: 'CODIGO_OPCION_DE_GRADO' })
-  auPoga2: number
+  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_OPCION_DE_GRADO' })
+  auPoga2: string
 
   @Column('varchar', { nullable: false, name: 'TITULO_OPCION_DE_GRADO' })
   title: string
