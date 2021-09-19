@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
-import { AgreementService } from './agreement.service';
-import { AgreementController } from './agreement.controller';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
+import { AgreementController } from './agreement.controller'
+import { AgreementEntity } from 'src/entities'
+import { CreateAgreementService, FindAgreementService } from './services'
 
 @Module({
-  providers: [AgreementService],
-  controllers: [AgreementController]
+  imports: [TypeOrmModule.forFeature([AgreementEntity])],
+  providers: [CreateAgreementService, FindAgreementService],
+  controllers: [AgreementController],
 })
 export class AgreementModule {}

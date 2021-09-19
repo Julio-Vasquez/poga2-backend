@@ -5,15 +5,15 @@ import { Repository } from 'typeorm'
 import { RoleEntity } from 'src/entities'
 
 @Injectable()
-export class FindService {
+export class FindRoleService {
   constructor(
     @InjectRepository(RoleEntity)
     private readonly roleRepository: Repository<RoleEntity>
   ) {}
 
-  public async findAll(): Promise<RoleEntity[] | any> {
+  public async findAllRole(): Promise<RoleEntity[]> {
     return await this.roleRepository.find({
-      select: ['role', 'auRole'],
+      select: ['role', 'uuidRole'],
     })
   }
 }

@@ -1,9 +1,15 @@
-import { Module } from '@nestjs/common';
-import { StateService } from './state.service';
-import { StateController } from './state.controller';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
+import { StateEntity } from 'src/entities'
+
+import { CreateStateService, FindStateService } from './services'
+
+import { StateController } from './state.controller'
 
 @Module({
-  providers: [StateService],
-  controllers: [StateController]
+  imports: [TypeOrmModule.forFeature([StateEntity])],
+  providers: [CreateStateService, FindStateService],
+  controllers: [StateController],
 })
 export class StateModule {}

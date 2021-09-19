@@ -5,7 +5,7 @@ import { Repository } from 'typeorm'
 import { RoleEntity } from 'src/entities'
 
 @Injectable()
-export class CreateService {
+export class CreateRoleService {
   constructor(
     @InjectRepository(RoleEntity)
     private readonly roleRepository: Repository<RoleEntity>

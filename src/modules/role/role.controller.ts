@@ -1,23 +1,21 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
 
-import { RoleEntity } from 'src/entities'
-
-import { CreateService, FindService } from './services'
+import { CreateRoleService, FindRoleService } from './services'
 
 @Controller('role')
 export class RoleController {
   constructor(
-    private readonly createRoleService: CreateService,
-    private readonly findRolesService: FindService
+    private readonly findRolesService: FindRoleService,
+    private readonly createRoleService: CreateRoleService
   ) {}
 
   @Get('list')
-  public async FindAllRoles() {
-    return await this.findRolesService.findAll()
+  public async findAllRoles() {
+    return await this.findRolesService.findAllRole()
   }
 
   @Post('create')
-  public async CreateRole(@Body('role') role: string) {
+  public async createRole(@Body('role') role: string) {
     return await this.createRoleService.createRol(role)
   }
 }
