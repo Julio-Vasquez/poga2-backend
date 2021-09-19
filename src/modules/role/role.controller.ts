@@ -9,7 +9,7 @@ export class RoleController {
     private readonly createRoleService: CreateRoleService
   ) {}
 
-  @Get('list')
+  @Get('/')
   public async findAllRoles() {
     return await this.findRolesService.findAllRole()
   }

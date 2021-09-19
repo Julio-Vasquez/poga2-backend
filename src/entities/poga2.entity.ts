@@ -47,7 +47,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'CODIGO_ESTADO' })
+  @JoinColumn({ name: 'fk_state' })
   state: StateEntity
 
   @OneToOne(() => ModalityEntity, modality => modality.poga2, {
@@ -55,7 +55,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'CODIGO_MODALIDAD' })
+  @JoinColumn({ name: 'fk_modality' })
   modality: ModalityEntity
 
   @OneToOne(() => SettledEntity, settled => settled.poga2, {
@@ -63,7 +63,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'CODIGO_RADICADO' })
+  @JoinColumn({ name: 'fk_settled' })
   settled: SettledEntity
 
   @OneToOne(() => PersonEntity, person => person.director, {
@@ -71,7 +71,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'DIRECTOR' })
+  @JoinColumn({ name: 'director' })
   director: PersonEntity
 
   @OneToOne(() => PersonEntity, person => person.studentOne, {
@@ -79,7 +79,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'ESTUDIANTE_1' })
+  @JoinColumn({ name: 'studentOne' })
   studentOne: PersonEntity
 
   @OneToOne(() => PersonEntity, person => person.studentTwo, {
@@ -87,7 +87,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'ESTUDIANTE_2' })
+  @JoinColumn({ name: 'studentTwo' })
   studentTwo: PersonEntity
 
   @OneToOne(() => PersonEntity, person => person.juryOne, {
@@ -95,7 +95,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'JURADO_1' })
+  @JoinColumn({ name: 'juryOne' })
   juryOne: Poga2Entity
 
   @OneToOne(() => PersonEntity, person => person.juryTwo, {
@@ -103,7 +103,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'JURADO_2' })
+  @JoinColumn({ name: 'juryTwo' })
   juryTwo: Poga2Entity
 
   @OneToOne(() => PersonEntity, person => person.juryThree, {
@@ -111,6 +111,6 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'JURADO_3' })
+  @JoinColumn({ name: 'juryThree' })
   juryThree: Poga2Entity
 }

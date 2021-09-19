@@ -9,7 +9,7 @@ export class AgreementController {
     private readonly findAgreementService: FindAgreementService
   ) {}
 
-  @Get('list')
+  @Get('/')
   public async findAllAgreement() {
     return await this.findAgreementService.findAllAgreement()
   }

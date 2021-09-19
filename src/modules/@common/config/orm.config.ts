@@ -10,4 +10,7 @@ export default registerAs('typeorm', () => ({
   synchronize: true,
   logging: true,
   entities: ['dist/entities/**/*.entity.js'],
+  ssl: {
+    rejectUnauthorized: false,
+  },
 }))

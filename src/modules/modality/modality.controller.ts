@@ -9,7 +9,7 @@ export class ModalityController {
     private readonly findModalityService: FindModalityService
   ) {}
 
-  @Get('list')
+  @Get('/')
   public async findAllModality() {
     return await this.findModalityService.findAllModality()
   }

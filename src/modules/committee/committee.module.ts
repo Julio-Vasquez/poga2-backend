@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
-import { CommitteeService } from './committee.service';
-import { CommitteeController } from './committee.controller';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { CommitteeEntity } from 'src/entities'
+
+import { CommitteeController } from './committee.controller'
+import { CreateCommitteeService, FindCommitteeService } from './services'
 
 @Module({
-  providers: [CommitteeService],
-  controllers: [CommitteeController]
+  imports: [TypeOrmModule.forFeature([CommitteeEntity])],
+  providers: [CreateCommitteeService, FindCommitteeService],
+  controllers: [CommitteeController],
 })
 export class CommitteeModule {}

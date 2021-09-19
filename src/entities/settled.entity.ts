@@ -17,8 +17,17 @@ export class SettledEntity {
   @PrimaryGeneratedColumn('uuid')
   uuidSettled: string
 
+  @Column('date', { nullable: false })
+  settledDate: string ///fecha radicado
+
   @Column('varchar', { nullable: false })
-  settled: string
+  inscriptionRecord: string //acta inscripcion
+
+  @Column('date', { nullable: false })
+  inscriptionDeadline: string
+
+  @Column('date', { nullable: false })
+  inscriptionDate: string
 
   @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
@@ -31,7 +40,7 @@ export class SettledEntity {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn({ name: 'CODIGO_COMITE' })
+  @JoinColumn({ name: 'fk_committee' })
   committee: CommitteeEntity
 
   @OneToOne(() => AgreementEntity, agreement => agreement.settled, {
@@ -39,7 +48,7 @@ export class SettledEntity {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn({ name: 'CODIGO_ACUERDO' })
+  @JoinColumn({ name: 'fk_agreement' })
   agreement: AgreementEntity
 
   @OneToOne(() => Poga2Entity, poga2 => poga2.settled, {

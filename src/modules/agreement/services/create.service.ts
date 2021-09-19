@@ -18,7 +18,7 @@ export class CreateAgreementService {
       },
     })
 
-    if (!agreement) {
+    if (!newAgreement) {
       await this.agreementRepository.save({
         agreement: agreement,
       })

@@ -9,7 +9,7 @@ export class StateController {
     private readonly createStateService: CreateStateService
   ) {}
 
-  @Get('list')
+  @Get('/')
   public async findAllStates() {
     return await this.findStateService.findAllState()
   }
