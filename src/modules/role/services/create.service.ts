@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { RoleEntity } from 'src/entities/role/role.entity'
 import { Repository } from 'typeorm'
+
+import { RoleEntity } from 'src/entities'
 
 @Injectable()
 export class CreateService {
@@ -10,7 +11,18 @@ export class CreateService {
     private readonly roleRepository: Repository<RoleEntity>
   ) {}
 
-  public async createRol() {
-    return true
+  public async createRol(role: string): Promise<boolean> {
+    const newRole = await this.roleRepository.findOne({
+      where: {
+        role: role,
+      },
+    })
+
+    if (!newRole) {
+      await this.roleRepository.save({
+        role: role,
+      })
+      return true
+    } else return false
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
-import { RoleEntity } from 'src/entities/role/role.entity'
+import { RoleEntity } from 'src/entities'
 
 @Injectable()
 export class FindService {
@@ -12,11 +12,8 @@ export class FindService {
   ) {}
 
   public async findAll(): Promise<RoleEntity[] | any> {
-    console.log('buscando todos')
-    return [
-      { id: 1, role: 'rol1' },
-      { id: 2, role: 'rol2' },
-      { id: 3, role: 'rol3' },
-    ]
+    return await this.roleRepository.find({
+      select: ['role', 'auRole'],
+    })
   }
 }

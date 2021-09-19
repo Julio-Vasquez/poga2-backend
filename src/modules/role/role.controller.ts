@@ -1,5 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common'
-import { RoleEntity } from 'src/entities/role/role.entity'
+import { Body, Controller, Get, Post } from '@nestjs/common'
+
+import { RoleEntity } from 'src/entities'
+
 import { CreateService, FindService } from './services'
 
 @Controller('role')
@@ -11,12 +13,11 @@ export class RoleController {
 
   @Get('list')
   public async FindAllRoles() {
-    const res: RoleEntity[] = await this.findRolesService.findAll()
-    return res
+    return await this.findRolesService.findAll()
   }
 
   @Post('create')
-  public async CreateRole() {
-    const res: boolean = await this.createRoleService.createRol()
+  public async CreateRole(@Body('role') role: string) {
+    return await this.createRoleService.createRol(role)
   }
 }

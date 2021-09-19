@@ -14,7 +14,7 @@ export class RoleEntity {
   @PrimaryGeneratedColumn('increment', { name: 'CODIGO_ROL' })
   auRole: number
 
-  @Column('varchar', { nullable: false, name: 'ROL' })
+  @Column('varchar', { nullable: false, name: 'ROL', unique: true })
   role: string
 
   @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
