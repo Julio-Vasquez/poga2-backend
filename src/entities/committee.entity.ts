@@ -9,18 +9,18 @@ import {
 
 import { SettledEntity } from './settled.entity'
 
-@Entity('COMITE')
+@Entity('Committee') //comite
 export class CommitteeEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_COMITE' })
-  auCommittee: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidCommittee: string
 
-  @Column('varchar', { nullable: false, name: 'COMITE' })
+  @Column('varchar', { nullable: false })
   committee: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => SettledEntity, settled => settled.committee, {

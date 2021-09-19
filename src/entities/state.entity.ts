@@ -9,18 +9,18 @@ import {
 
 import { Poga2Entity } from './poga2.entity'
 
-@Entity('ESTADO')
+@Entity('State')
 export class StateEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_ESTADO' })
-  auState: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidState: string
 
-  @Column('varchar', { nullable: false, name: 'ESTADO' })
+  @Column('varchar', { nullable: false, unique: true })
   state: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => Poga2Entity, poga2 => poga2.state, {

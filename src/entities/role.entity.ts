@@ -9,18 +9,18 @@ import {
 
 import { PersonEntity } from './person.entity'
 
-@Entity('ROL')
+@Entity('Role') //rol
 export class RoleEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_ROL' })
-  auRole: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidRole: string
 
-  @Column('varchar', { nullable: false, name: 'ROL', unique: true })
+  @Column('varchar', { nullable: false, unique: true })
   role: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToMany(() => PersonEntity, person => person.role, {

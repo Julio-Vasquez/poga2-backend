@@ -13,28 +13,28 @@ import {
 import { Poga2Entity } from './poga2.entity'
 import { RoleEntity } from './role.entity'
 
-@Entity('PERSONA')
+@Entity('Person') //persona
 @Index(['phone', 'identification'])
 export class PersonEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_PERSONA' })
-  auPerson: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidPerson: string
 
-  @Column('bigint', { nullable: false, name: 'IDENTIFICACION' })
+  @Column('bigint', { nullable: false })
   identification: number
 
-  @Column('varchar', { nullable: false, name: 'NOMBRE' })
+  @Column('varchar', { nullable: false })
   name: string
 
-  @Column('varchar', { nullable: false, name: 'CORREO_ELECTRONICO' })
+  @Column('varchar', { nullable: false })
   email: string
 
-  @Column('bigint', { nullable: false, name: 'CELULAR' })
+  @Column('bigint', { nullable: false })
   phone: number
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @ManyToOne(() => RoleEntity, role => role.person, {

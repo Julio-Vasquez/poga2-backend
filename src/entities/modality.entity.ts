@@ -9,18 +9,18 @@ import {
 
 import { Poga2Entity } from './poga2.entity'
 
-@Entity('MODALIDAD')
+@Entity('Modality') //modalidad
 export class ModalityEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_MODALIDAD' })
-  auModality: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidModality: string
 
-  @Column('varchar', { nullable: false, name: 'MODALIDAD' })
+  @Column('varchar', { nullable: false, unique: true })
   modality: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => Poga2Entity, poga2 => poga2.modality, {

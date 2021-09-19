@@ -12,18 +12,18 @@ import { AgreementEntity } from './agreement.entity'
 import { CommitteeEntity } from './committee.entity'
 import { Poga2Entity } from './poga2.entity'
 
-@Entity('RADICADO')
+@Entity('Settled') //radicado
 export class SettledEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_RADICADO' })
-  auSettled: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidSettled: string
 
-  @Column('varchar', { nullable: false, name: 'RADICADO' })
+  @Column('varchar', { nullable: false })
   settled: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => CommitteeEntity, committee => committee.settled, {

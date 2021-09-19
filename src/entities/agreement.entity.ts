@@ -9,18 +9,18 @@ import {
 
 import { SettledEntity } from './settled.entity'
 
-@Entity('ACUERDO')
+@Entity('Agreement') //acuerdo
 export class AgreementEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_ACUERDO' })
-  auAgreement: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidAgreement: string
 
-  @Column('varchar', { nullable: false, name: 'ACUERDO_OPCION_GRADO' })
+  @Column('varchar', { nullable: false })
   agreement: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => SettledEntity, settled => settled.agreement, {

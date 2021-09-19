@@ -13,33 +13,33 @@ import { PersonEntity } from './person.entity'
 import { SettledEntity } from './settled.entity'
 import { StateEntity } from './state.entity'
 
-@Entity('OPCION_DE_GRADO')
+@Entity('Poga2') //opcion de grado
 export class Poga2Entity {
-  @PrimaryGeneratedColumn('uuid', { name: 'CODIGO_OPCION_DE_GRADO' })
-  auPoga2: string
+  @PrimaryGeneratedColumn('uuid')
+  uuidPoga2: string
 
-  @Column('varchar', { nullable: false, name: 'TITULO_OPCION_DE_GRADO' })
+  @Column('varchar', { nullable: false })
   title: string
 
-  @Column('text', { nullable: true, name: 'NOTAS' })
+  @Column('text', { nullable: true })
   notes: string
 
-  @Column('date', { nullable: false, name: 'FECHA_INICIAL' })
+  @Column('date', { nullable: false })
   dateStart: string
 
-  @Column('date', { nullable: false, name: 'FECHA_FINAL' })
+  @Column('date', { nullable: false })
   dateEnd: string
 
-  @Column('date', { nullable: true, name: 'FECHA_SUSTENTACION' })
+  @Column('date', { nullable: true })
   dateSustentation: string
 
-  @Column('date', { nullable: false, name: 'FECHA_GRADUACION' })
+  @Column('date', { nullable: false })
   dateGrade: string
 
-  @CreateDateColumn({ type: 'timestamp', name: 'CREADO' })
+  @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', name: 'ACTUALIZADO' })
+  @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
   @OneToOne(() => StateEntity, state => state.poga2, {
