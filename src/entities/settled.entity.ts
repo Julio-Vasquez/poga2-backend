@@ -40,7 +40,7 @@ export class SettledEntity {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fk_committee' })
+  @JoinColumn({ name: 'fkCommittee' })
   committee: CommitteeEntity
 
   @OneToOne(() => AgreementEntity, agreement => agreement.settled, {
@@ -48,7 +48,7 @@ export class SettledEntity {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fk_agreement' })
+  @JoinColumn({ name: 'fkAgreement' })
   agreement: AgreementEntity
 
   @OneToOne(() => Poga2Entity, poga2 => poga2.settled, {

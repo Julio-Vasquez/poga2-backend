@@ -47,7 +47,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fk_state' })
+  @JoinColumn({ name: 'fkState' })
   state: StateEntity
 
   @OneToOne(() => ModalityEntity, modality => modality.poga2, {
@@ -55,7 +55,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fk_modality' })
+  @JoinColumn({ name: 'fkModality' })
   modality: ModalityEntity
 
   @OneToOne(() => SettledEntity, settled => settled.poga2, {
@@ -63,7 +63,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fk_settled' })
+  @JoinColumn({ name: 'fkSettled' })
   settled: SettledEntity
 
   @OneToOne(() => PersonEntity, person => person.director, {
