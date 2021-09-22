@@ -16,4 +16,8 @@ export class PersonDto {
   @IsNotEmpty()
   @IsEmail()
   readonly email: string
+
+  @IsNotEmpty()
+  @IsString()
+  readonly role: string
 }

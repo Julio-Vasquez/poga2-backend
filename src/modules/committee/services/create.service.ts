@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common'
+import { HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
 import { CommitteeEntity } from 'src/entities'
+import { IResponse } from 'src/modules/@common/interface/response.interface'
+import { FAILED, SUCCESS } from 'src/modules/@common/constant/messages.constant'
 
 @Injectable()
 export class CreateCommitteeService {
@@ -11,17 +13,14 @@ export class CreateCommitteeService {
     private readonly committeeRepository: Repository<CommitteeEntity>
   ) {}
 
-  public async createCommittee(committee: string) {
+  public async createCommittee(committee: string): Promise<IResponse> {
     const newCommittee = await this.committeeRepository.findOne({
-      where: {
-        committee: committee,
-      },
+      committee: committee,
     })
     if (!newCommittee) {
-      await this.committeeRepository.save({
-        committee: committee,
-      })
-      return true
-    } else return false
+      await this.committeeRepository.save({ committee })
+      return { message: SUCCESS('Comite'), responseStatus: HttpStatus.OK }
+    } else
+      return { message: FAILED('Comite'), responseStatus: HttpStatus.NOT_FOUND }
   }
 }

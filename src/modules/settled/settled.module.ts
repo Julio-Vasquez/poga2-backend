@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { SettledEntity } from 'src/entities'
+import { AgreementEntity, CommitteeEntity, SettledEntity } from 'src/entities'
 import { CreateSettledService, FindSettledService } from './services'
 
 import { SettledController } from './settled.controller'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SettledEntity])],
+  imports: [
+    TypeOrmModule.forFeature([SettledEntity, AgreementEntity, CommitteeEntity]),
+  ],
   providers: [CreateSettledService, FindSettledService],
   controllers: [SettledController],
 })

@@ -1,5 +1,5 @@
 export interface IResponse {
-  message?: string
+  message: string
   payload?: any
-  responseStatus: string
+  responseStatus?: number
 }

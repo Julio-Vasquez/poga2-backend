@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
+import { SettledDto } from './dto/settled.dto'
 
 import { CreateSettledService, FindSettledService } from './services'
 
@@ -15,7 +16,7 @@ export class SettledController {
   }
 
   @Post('create')
-  public async createSettled(@Body() settled: any) {
+  public async createSettled(@Body() settled: SettledDto) {
     return await this.createSettledService.createSettled(settled)
   }
 }

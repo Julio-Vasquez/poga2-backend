@@ -40,7 +40,7 @@ export class Poga2Dto {
 
   @IsNotEmpty()
   @IsString()
-  readonly Settled: string
+  readonly settled: string
 
   @IsNotEmpty()
   @IsNumberString({ no_symbols: true })

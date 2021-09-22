@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -13,6 +14,7 @@ import { CommitteeEntity } from './committee.entity'
 import { Poga2Entity } from './poga2.entity'
 
 @Entity('Settled') //radicado
+@Index(['inscriptionRecord'])
 export class SettledEntity {
   @PrimaryGeneratedColumn('uuid')
   uuidSettled: string
@@ -20,7 +22,7 @@ export class SettledEntity {
   @Column('date', { nullable: false })
   settledDate: string ///fecha radicado
 
-  @Column('varchar', { nullable: false })
+  @Column('varchar', { nullable: false, unique: true })
   inscriptionRecord: string //acta inscripcion
 
   @Column('date', { nullable: false })

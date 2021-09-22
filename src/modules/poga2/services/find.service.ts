@@ -12,6 +12,25 @@ export class FindPoga2Service {
   ) {}
 
   public async findAllPoga2() {
-    return await this.poga2Repository.find({})
+    return await this.poga2Repository.find({
+      select: [
+        'notes',
+        'state',
+        'uuidPoga2',
+        'title',
+        'modality',
+        'settled',
+        'dateStart',
+        'dateEnd',
+        'dateSustentation',
+        'dateGrade',
+        'director',
+        'studentOne',
+        'studentTwo',
+        'juryOne',
+        'juryTwo',
+        'juryThree',
+      ],
+    })
   }
 }
