@@ -87,17 +87,26 @@ export class CreatePoga2Service {
       ]),
     })
     if (peoples.length === 6) {
-      await this.poga2Repository.save({
-        ...pogaTwo,
-        ...peoples,
+      const poga2Entity = await this.poga2Repository.findOne({
+        title: pogaTwo.title,
       })
-      return {
-        message: SUCCESS('OPCION DE GRADO'),
-        responseStatus: HttpStatus.OK,
-      }
+      if (!poga2Entity) {
+        await this.poga2Repository.save({
+          ...pogaTwo,
+          ...peoples,
+        })
+        return {
+          message: SUCCESS('OPCION DE GRADO'),
+          responseStatus: HttpStatus.OK,
+        }
+      } else
+        return {
+          message: FAILED('OPCiON DE GRADO'),
+          responseStatus: HttpStatus.NOT_FOUND,
+        }
     } else
       return {
-        message: FAILED('OPCION DE GRADO'),
+        message: NO_EXISTS('OPCION DE GRADO'),
         responseStatus: HttpStatus.NOT_FOUND,
       }
   }
