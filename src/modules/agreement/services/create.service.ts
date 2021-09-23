@@ -5,6 +5,7 @@ import { Repository } from 'typeorm'
 import { AgreementEntity } from 'src/entities'
 import { IResponse } from 'src/modules/@common/interface/response.interface'
 import { FAILED, SUCCESS } from 'src/modules/@common/constant/messages.constant'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreateAgreementService {
@@ -14,6 +15,7 @@ export class CreateAgreementService {
   ) {}
 
   public async createAgreement(agreement: string): Promise<IResponse> {
+    agreement = Capitalize(agreement)
     const newAgreement = await this.agreementRepository.findOne({
       agreement: agreement,
     })

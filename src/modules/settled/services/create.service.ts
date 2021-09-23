@@ -10,6 +10,7 @@ import {
   NO_EXISTS,
   SUCCESS,
 } from 'src/modules/@common/constant/messages.constant'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreateSettledService {
@@ -23,10 +24,10 @@ export class CreateSettledService {
   ) {}
 
   public async createSettled(settled: SettledDto): Promise<IResponse> {
-    const { agreement, committee, ...data } = settled
+    const { agreement, committee, record, ...data } = settled
 
     const agreementEntity = await this.agreementRepository.findOne({
-      agreement: agreement,
+      agreement: Capitalize(agreement),
     })
 
     if (!agreementEntity)
@@ -36,7 +37,7 @@ export class CreateSettledService {
       }
 
     const committeeEntity = await this.committeeRepository.findOne({
-      committee: committee,
+      committee: Capitalize(committee),
     })
 
     if (!committeeEntity)
@@ -46,12 +47,13 @@ export class CreateSettledService {
       }
 
     const newSettled = await this.settledRepository.findOne({
-      record: settled.record,
+      record: Capitalize(record),
     })
 
     if (!newSettled) {
       await this.settledRepository.save({
         ...data,
+        record: Capitalize(record),
         agreement: agreementEntity,
         committee: committeeEntity,
       })

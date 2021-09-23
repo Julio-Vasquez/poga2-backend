@@ -5,6 +5,7 @@ import { Repository } from 'typeorm'
 import { RoleEntity } from 'src/entities'
 import { IResponse } from 'src/modules/@common/interface/response.interface'
 import { FAILED, SUCCESS } from 'src/modules/@common/constant/messages.constant'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreateRoleService {
@@ -14,6 +15,7 @@ export class CreateRoleService {
   ) {}
 
   public async createRol(role: string): Promise<IResponse> {
+    role = Capitalize(role)
     const newRole = await this.roleRepository.findOne({
       role: role,
     })

@@ -16,6 +16,7 @@ import {
   NO_EXISTS,
 } from 'src/modules/@common/constant/messages.constant'
 import { IResponse } from 'src/modules/@common/interface/response.interface'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreatePoga2Service {
@@ -43,11 +44,12 @@ export class CreatePoga2Service {
       state,
       settled,
       modality,
+      title,
       ...pogaTwo
     } = poga2
 
     const stateEntity = await this.stateRepository.findOne({
-      state: state,
+      state: Capitalize(state),
     })
 
     if (!stateEntity)
@@ -57,7 +59,7 @@ export class CreatePoga2Service {
       }
 
     const settledEntity = await this.settledRepository.findOne({
-      record: settled,
+      record: Capitalize(settled),
     })
 
     if (!settledEntity)
@@ -67,7 +69,7 @@ export class CreatePoga2Service {
       }
 
     const modalityEntity = await this.modalityRepository.findOne({
-      modality: modality,
+      modality: Capitalize(modality),
     })
 
     if (!modalityEntity)
@@ -89,7 +91,7 @@ export class CreatePoga2Service {
     console.log(peoples)
     if (peoples.length === 6) {
       const poga2Entity = await this.poga2Repository.findOne({
-        title: pogaTwo.title,
+        title: Capitalize(title),
       })
 
       if (!poga2Entity) {
@@ -106,6 +108,7 @@ export class CreatePoga2Service {
 
         await this.poga2Repository.save({
           ...pogaTwo,
+          title: Capitalize(title),
           director: arrPeople[director],
           studentOne: arrPeople[studentOne],
           studentTwo: arrPeople[studentTwo],

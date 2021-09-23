@@ -5,6 +5,7 @@ import { Repository } from 'typeorm'
 import { CommitteeEntity } from 'src/entities'
 import { IResponse } from 'src/modules/@common/interface/response.interface'
 import { FAILED, SUCCESS } from 'src/modules/@common/constant/messages.constant'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreateCommitteeService {
@@ -14,6 +15,7 @@ export class CreateCommitteeService {
   ) {}
 
   public async createCommittee(committee: string): Promise<IResponse> {
+    committee = Capitalize(committee)
     const newCommittee = await this.committeeRepository.findOne({
       committee: committee,
     })

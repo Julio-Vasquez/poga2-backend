@@ -10,6 +10,7 @@ import {
   NO_EXISTS,
   SUCCESS,
 } from 'src/modules/@common/constant/messages.constant'
+import { Capitalize } from 'src/modules/@common/util/capitalize.util'
 
 @Injectable()
 export class CreatePersonService {
@@ -22,9 +23,8 @@ export class CreatePersonService {
 
   public async createPerson(person: PersonDto): Promise<IResponse> {
     const { role, ...data } = person
-
     const roleEntity = await this.roleRepository.findOne({
-      role: role,
+      role: Capitalize(role),
     })
 
     if (!roleEntity)
