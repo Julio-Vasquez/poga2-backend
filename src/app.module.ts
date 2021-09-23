@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common'
 
+import { AppController } from './app.controller'
+
 import { CommonModule } from './modules/@common/@common.module'
 import { AgreementModule } from './modules/agreement/agreement.module'
 import { CommitteeModule } from './modules/committee/committee.module'
@@ -22,7 +24,7 @@ import { StateModule } from './modules/state/state.module'
     SettledModule,
     StateModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
