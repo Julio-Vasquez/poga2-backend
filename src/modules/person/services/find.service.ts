@@ -11,8 +11,14 @@ export class FindPersonService {
   ) {}
 
   public async findAllPerson() {
-    return await this.personRepository.find({
-      select: ['email', 'name', 'phone', 'identification', 'uuidPerson'],
-    })
+    return await this.personRepository
+      .createQueryBuilder('p')
+      .select('p.uuidPerson', 'uuidPerson')
+      .addSelect('p.identification', 'identification')
+      .addSelect('p.name', 'name')
+      .addSelect('p.email', 'email')
+      .addSelect('p.phone', 'phone')
+      .addSelect('p.role', 'role')
+      .execute()
   }
 }

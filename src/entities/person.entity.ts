@@ -42,7 +42,7 @@ export class PersonEntity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fkRole' })
+  @JoinColumn({ name: 'role' })
   role: RoleEntity
 
   @OneToOne(() => Poga2Entity, poga2 => poga2.director, {

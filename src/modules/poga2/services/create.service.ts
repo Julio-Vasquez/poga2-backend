@@ -57,7 +57,7 @@ export class CreatePoga2Service {
       }
 
     const settledEntity = await this.settledRepository.findOne({
-      inscriptionRecord: settled,
+      record: settled,
     })
 
     if (!settledEntity)
@@ -86,14 +86,35 @@ export class CreatePoga2Service {
         juryThree,
       ]),
     })
+    console.log(peoples)
     if (peoples.length === 6) {
       const poga2Entity = await this.poga2Repository.findOne({
         title: pogaTwo.title,
       })
+
       if (!poga2Entity) {
+        const arrPeople = {
+          [director]: {},
+          [studentOne]: {},
+          [studentTwo]: {},
+          [juryOne]: {},
+          [juryTwo]: {},
+          [juryThree]: {},
+        }
+
+        peoples.forEach(person => (arrPeople[person.identification] = person))
+
         await this.poga2Repository.save({
           ...pogaTwo,
-          ...peoples,
+          director: arrPeople[director],
+          studentOne: arrPeople[studentOne],
+          studentTwo: arrPeople[studentTwo],
+          juryOne: arrPeople[juryOne],
+          juryTwo: arrPeople[juryTwo],
+          juryThree: arrPeople[juryThree],
+          state: stateEntity,
+          modality: modalityEntity,
+          settled: settledEntity,
         })
         return {
           message: SUCCESS('OPCION DE GRADO'),

@@ -35,7 +35,7 @@ export class CreatePersonService {
     })
 
     if (!newPerson) {
-      await this.personRepository.save({ ...data, roleEntity })
+      await this.personRepository.save({ ...data, role: roleEntity })
       return { message: SUCCESS('Persona'), responseStatus: HttpStatus.OK }
     } else
       return {

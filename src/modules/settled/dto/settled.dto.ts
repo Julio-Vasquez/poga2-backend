@@ -7,7 +7,7 @@ export class SettledDto {
 
   @IsNotEmpty()
   @IsString()
-  readonly inscriptionRecord: string
+  readonly record: string
 
   @IsNotEmpty()
   @IsISO8601()

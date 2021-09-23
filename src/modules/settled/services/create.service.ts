@@ -46,14 +46,14 @@ export class CreateSettledService {
       }
 
     const newSettled = await this.settledRepository.findOne({
-      inscriptionRecord: settled.inscriptionRecord,
+      record: settled.record,
     })
 
     if (!newSettled) {
       await this.settledRepository.save({
         ...data,
-        agreementEntity,
-        committeeEntity,
+        agreement: agreementEntity,
+        committee: committeeEntity,
       })
       return {
         message: SUCCESS('Radicado'),

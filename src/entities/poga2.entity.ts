@@ -42,12 +42,12 @@ export class Poga2Entity {
   @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
-  @OneToOne(() => StateEntity, state => state.poga2, {
+  @OneToOne(type => StateEntity, state => state.poga2, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fkState' })
+  @JoinColumn({ name: 'state' })
   state: StateEntity
 
   @OneToOne(() => ModalityEntity, modality => modality.poga2, {
@@ -55,7 +55,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fkModality' })
+  @JoinColumn({ name: 'modality' })
   modality: ModalityEntity
 
   @OneToOne(() => SettledEntity, settled => settled.poga2, {
@@ -63,7 +63,7 @@ export class Poga2Entity {
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
-  @JoinColumn({ name: 'fkSettled' })
+  @JoinColumn({ name: 'settled' })
   settled: SettledEntity
 
   @OneToOne(() => PersonEntity, person => person.director, {

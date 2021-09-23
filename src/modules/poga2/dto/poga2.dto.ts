@@ -10,7 +10,6 @@ export class Poga2Dto {
   @IsString()
   readonly title: string
 
-  @IsNotEmpty()
   @IsString()
   readonly notes: string
 

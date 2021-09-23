@@ -12,14 +12,15 @@ export class FindSettledService {
   ) {}
 
   public async findAllSettled() {
-    return await this.settledRepository.find({
-      select: [
-        'uuidSettled',
-        'inscriptionDate',
-        'inscriptionDeadline',
-        'inscriptionRecord',
-        'settledDate',
-      ],
-    })
+    return await this.settledRepository
+      .createQueryBuilder('s')
+      .select('s.uuidSettled', 'uuidSettled')
+      .addSelect('s.inscriptionDate', 'inscriptionDate')
+      .addSelect('s.inscriptionDeadline', 'inscriptionDeadline')
+      .addSelect('s.record', 'record')
+      .addSelect('s.settledDate', 'settledDate')
+      .addSelect('s.committee', 'committee')
+      .addSelect('s.agreement', 'agreement')
+      .execute()
   }
 }
