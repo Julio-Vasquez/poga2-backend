@@ -21,8 +21,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe())
 
   app.setGlobalPrefix(config.get<string>('app.prefix'))
-
-  await app.listen(config.get<number>('app.port') || 3000, '0.0.0.0', () => {
+  const PORT = process.env.PORT || 3000
+  await app.listen(PORT, '0.0.0.0', () => {
     Logger.debug('Init app ', 'Test')
     Logger.debug(`🔥🐱 ${config.get<string>('app.name')} 🐱🔥`, 'Logger-App')
     Logger.log(`🎓  Mode : dev 🎓`, 'Logger-App')
