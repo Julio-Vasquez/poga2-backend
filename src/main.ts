@@ -22,7 +22,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix(config.get<string>('app.prefix'))
 
-  await app.listen(config.get<number>('app.port') || process.env.PORT, () => {
+  await app.listen(config.get<number>('app.port') || 3000, '0.0.0.0', () => {
     Logger.debug('Init app ', 'Test')
     Logger.debug(`🔥🐱 ${config.get<string>('app.name')} 🐱🔥`, 'Logger-App')
     Logger.log(`🎓  Mode : dev 🎓`, 'Logger-App')
