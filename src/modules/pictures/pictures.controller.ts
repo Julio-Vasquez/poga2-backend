@@ -9,6 +9,6 @@ export class PicturesController {
   public async findPicture(@Param('profile') picture: string, @Res() res) {
     const result = await this.findPictureService.findPicture(picture)
     console.log(result)
-    return res.sendFile(result)
+    return res.sendFile(result, { root: '.' })
   }
 }

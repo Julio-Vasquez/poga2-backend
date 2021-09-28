@@ -6,11 +6,9 @@ export class FindPictureService {
   constructor() {}
 
   public async findPicture(picture: string) {
-    const path = __dirname.replace(
-      'dist\\modules\\pictures\\services',
-      'uploads/person'
-    )
-    return existsSync(`uploads/person/${picture}`)
+    const path = __dirname.replace(__dirname, 'uploads/person')
+
+    return existsSync(`${path}/${picture}`)
       ? `${path}/${picture}`
       : `${path}/no_found.png`
   }
