@@ -21,7 +21,12 @@ export class CreatePersonService {
     private readonly roleRepository: Repository<RoleEntity>
   ) {}
 
-  public async createPerson(person: PersonDto): Promise<IResponse> {
+  public async createPerson(
+    person: PersonDto,
+    file: Express.Multer.File
+  ): Promise<IResponse> {
+    console.log(person)
+
     const { role, ...data } = person
     const roleEntity = await this.roleRepository.findOne({
       role: Capitalize(role),
@@ -35,7 +40,11 @@ export class CreatePersonService {
     })
 
     if (!newPerson) {
-      await this.personRepository.save({ ...data, role: roleEntity })
+      await this.personRepository.save({
+        ...data,
+        urlPhoto: file.path,
+        role: roleEntity,
+      })
       return { message: SUCCESS('Persona'), responseStatus: HttpStatus.OK }
     } else
       return {

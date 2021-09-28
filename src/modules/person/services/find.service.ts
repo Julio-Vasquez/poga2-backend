@@ -19,6 +19,7 @@ export class FindPersonService {
       .addSelect('p.email', 'email')
       .addSelect('p.phone', 'phone')
       .addSelect('p.role', 'role')
+      .addSelect('p.urlPhoto', 'photo')
       .execute()
   }
 }

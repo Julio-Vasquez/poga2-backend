@@ -31,6 +31,9 @@ export class PersonEntity {
   @Column('bigint', { nullable: false })
   phone: number
 
+  @Column('text', { nullable: true })
+  urlPhoto: string
+
   @CreateDateColumn({ type: 'timestamp' })
   createAt: Date
 
