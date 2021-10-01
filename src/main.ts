@@ -8,8 +8,11 @@ import { AppModule } from './app.module'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['warn', 'error', 'log', 'debug'],
+    cors: true,
   })
   const config: ConfigService = app.get(ConfigService)
+
+  app.enableCors()
 
   app.use(compression())
   app.useGlobalPipes(new ValidationPipe())
