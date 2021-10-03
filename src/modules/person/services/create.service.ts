@@ -11,6 +11,7 @@ import {
   SUCCESS,
 } from 'src/modules/@common/constant/messages.constant'
 import { Capitalize } from 'src/modules/@common/util/capitalize.util'
+import { ConfigService } from '@nestjs/config'
 
 @Injectable()
 export class CreatePersonService {
@@ -18,7 +19,8 @@ export class CreatePersonService {
     @InjectRepository(PersonEntity)
     private readonly personRepository: Repository<PersonEntity>,
     @InjectRepository(RoleEntity)
-    private readonly roleRepository: Repository<RoleEntity>
+    private readonly roleRepository: Repository<RoleEntity>,
+    private readonly configService: ConfigService
   ) {}
 
   public async createPerson(
@@ -40,9 +42,12 @@ export class CreatePersonService {
     })
 
     if (!newPerson) {
+      console.log(this.configService.get<string>('app.deploy'))
       await this.personRepository.save({
         ...data,
-        urlPhoto: file.path,
+        urlPhoto: `${this.configService.get<string>('app.deploy')}/${
+          file.filename
+        }`,
         role: roleEntity,
       })
       return { message: SUCCESS('Persona'), responseStatus: HttpStatus.OK }
