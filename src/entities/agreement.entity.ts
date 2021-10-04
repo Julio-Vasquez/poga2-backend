@@ -2,7 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -23,7 +23,7 @@ export class AgreementEntity {
   @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
-  @OneToOne(() => SettledEntity, settled => settled.agreement, {
+  @OneToMany(() => SettledEntity, settled => settled.agreement, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',

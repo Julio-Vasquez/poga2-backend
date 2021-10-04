@@ -5,7 +5,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
-  OneToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -48,42 +48,42 @@ export class PersonEntity {
   @JoinColumn({ name: 'role' })
   role: RoleEntity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.director, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.director, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
   director: Poga2Entity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.studentOne, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.studentOne, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
   studentOne: Poga2Entity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.studentTwo, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.studentTwo, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
   studentTwo: Poga2Entity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.juryOne, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.juryOne, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
   juryOne: Poga2Entity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.juryTwo, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.juryTwo, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
   })
   juryTwo: Poga2Entity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.juryThree, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.juryThree, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',

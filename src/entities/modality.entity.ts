@@ -2,7 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -23,7 +23,7 @@ export class ModalityEntity {
   @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.modality, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.modality, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',

@@ -3,9 +3,9 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm'
 
 import { ModalityEntity } from './modality.entity'
@@ -42,7 +42,7 @@ export class Poga2Entity {
   @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
-  @OneToOne(type => StateEntity, state => state.poga2, {
+  @ManyToOne(type => StateEntity, state => state.poga2, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -50,7 +50,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'state' })
   state: StateEntity
 
-  @OneToOne(() => ModalityEntity, modality => modality.poga2, {
+  @ManyToOne(() => ModalityEntity, modality => modality.poga2, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -58,7 +58,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'modality' })
   modality: ModalityEntity
 
-  @OneToOne(() => SettledEntity, settled => settled.poga2, {
+  @ManyToOne(() => SettledEntity, settled => settled.poga2, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -66,7 +66,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'settled' })
   settled: SettledEntity
 
-  @OneToOne(() => PersonEntity, person => person.director, {
+  @ManyToOne(() => PersonEntity, person => person.director, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -74,7 +74,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'director' })
   director: PersonEntity
 
-  @OneToOne(() => PersonEntity, person => person.studentOne, {
+  @ManyToOne(() => PersonEntity, person => person.studentOne, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -82,7 +82,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'studentOne' })
   studentOne: PersonEntity
 
-  @OneToOne(() => PersonEntity, person => person.studentTwo, {
+  @ManyToOne(() => PersonEntity, person => person.studentTwo, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -90,7 +90,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'studentTwo' })
   studentTwo: PersonEntity
 
-  @OneToOne(() => PersonEntity, person => person.juryOne, {
+  @ManyToOne(() => PersonEntity, person => person.juryOne, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -98,7 +98,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'juryOne' })
   juryOne: Poga2Entity
 
-  @OneToOne(() => PersonEntity, person => person.juryTwo, {
+  @ManyToOne(() => PersonEntity, person => person.juryTwo, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',
@@ -106,7 +106,7 @@ export class Poga2Entity {
   @JoinColumn({ name: 'juryTwo' })
   juryTwo: Poga2Entity
 
-  @OneToOne(() => PersonEntity, person => person.juryThree, {
+  @ManyToOne(() => PersonEntity, person => person.juryThree, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',

@@ -4,7 +4,8 @@ import {
   Entity,
   Index,
   JoinColumn,
-  OneToOne,
+  OneToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -37,7 +38,7 @@ export class SettledEntity {
   @UpdateDateColumn({ type: 'timestamp' })
   updateAt: Date
 
-  @OneToOne(() => CommitteeEntity, committee => committee.settled, {
+  @ManyToOne(() => CommitteeEntity, committee => committee.settled, {
     nullable: false,
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
@@ -45,7 +46,7 @@ export class SettledEntity {
   @JoinColumn({ name: 'committee' })
   committee: CommitteeEntity
 
-  @OneToOne(() => AgreementEntity, agreement => agreement.settled, {
+  @ManyToOne(() => AgreementEntity, agreement => agreement.settled, {
     nullable: false,
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
@@ -53,7 +54,7 @@ export class SettledEntity {
   @JoinColumn({ name: 'agreement' })
   agreement: AgreementEntity
 
-  @OneToOne(() => Poga2Entity, poga2 => poga2.settled, {
+  @OneToMany(() => Poga2Entity, poga2 => poga2.settled, {
     nullable: false,
     onUpdate: 'RESTRICT',
     onDelete: 'RESTRICT',

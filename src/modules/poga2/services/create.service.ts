@@ -49,7 +49,7 @@ export class CreatePoga2Service {
     } = poga2
 
     const stateEntity = await this.stateRepository.findOne({
-      state: Capitalize(state),
+      state: state,
     })
 
     if (!stateEntity)
@@ -88,7 +88,7 @@ export class CreatePoga2Service {
         juryThree,
       ]),
     })
-    console.log(peoples)
+
     if (peoples.length === 6) {
       const poga2Entity = await this.poga2Repository.findOne({
         title: Capitalize(title),
@@ -119,6 +119,7 @@ export class CreatePoga2Service {
           modality: modalityEntity,
           settled: settledEntity,
         })
+
         return {
           message: SUCCESS('OPCION DE GRADO'),
           responseStatus: HttpStatus.OK,
